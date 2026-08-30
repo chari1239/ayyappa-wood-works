@@ -1,0 +1,23 @@
+{
+  "name": "ayyapa-wood-works",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "sanity:dev": "npm run dev -w sanity",
+    "sanity:deploy": "npm run deploy -w sanity"
+  },
+  "dependencies": {
+    "@sanity/client": "^6.29.1",
+    "@sanity/image-url": "^1.1.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.19"
+  },
+  "workspaces": [
+    "sanity"
+  ]
+}
