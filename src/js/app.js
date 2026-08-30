@@ -1,4 +1,4 @@
-import { CONFIG, DEFAULT_WHATSAPP_MESSAGE, getWhatsAppUrl } from '../config.js';
+﻿import { CONFIG, DEFAULT_WHATSAPP_MESSAGE, getWhatsAppUrl } from '../config.js';
 import { demoCategories, demoProjects } from '../data/demoProjects.js';
 import { createFilterableGallery, doorFilters, renderCategoryCards, woodworkFilters } from './gallery.js';
 import { getCurrentLanguage, getStoredLanguage, setCurrentLanguage, setStoredLanguage, t } from './i18n.js';
@@ -225,20 +225,30 @@ function initCategoryLinks() {
 }
 
 function initContactLinks() {
-  const phoneLabel = document.querySelector('[data-business-phone]');
-  const whatsappLabel = document.querySelector('[data-whatsapp-label]');
-  const locationLabel = document.querySelector('[data-business-location-link]');
+  const phoneValue = document.querySelector('[data-business-phone]');
+  const whatsappValue = document.querySelector('[data-whatsapp-label]');
+  const locationLink = document.querySelector('[data-business-location-link]');
   const callLink = document.querySelector('[data-call-link]');
   const whatsappLink = document.querySelector('[data-whatsapp-link]');
   const directionsLink = document.querySelector('[data-directions-link]');
 
-  phoneLabel.textContent = CONFIG.BUSINESS_PHONE;
-  whatsappLabel.textContent = formatWhatsAppNumber(CONFIG.WHATSAPP_NUMBER);
-  locationLabel.textContent = textContent('contact.locationValue');
-  callLink.href = `tel:${CONFIG.BUSINESS_PHONE.replace(/\s/g, '+91 9989 356819')}`;
+  if (!phoneValue || !whatsappValue || !locationLink || !callLink || !whatsappLink || !directionsLink) return;
+
+  const phone = CONFIG.BUSINESS_PHONE || '+91XXXXXXXXXX';
+  const whatsapp = CONFIG.WHATSAPP_NUMBER || '+91XXXXXXXXXX';
+  const cleanedPhone = phone.replace(/[^\d+]/g, '');
+  const mapUrl = CONFIG.BUSINESS_LOCATION_URL || 'https://www.google.com/maps/search/?api=1&query=Ayyapa+Wood+Works';
+  const mapLabel = t('contact.locationValue') || 'Open in Google Maps';
+
+  phoneValue.textContent = phone;
+  whatsappValue.textContent = formatWhatsAppNumber(whatsapp);
+  locationLink.textContent = mapLabel;
+  locationLink.href = mapUrl;
+  locationLink.setAttribute('aria-label', mapLabel);
+  callLink.href = `tel:${cleanedPhone}`;
   whatsappLink.href = getWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE);
-  locationLabel.href =CONFIG.BUSINESS_LOCATION_URL;
-  directionsLink.href = CONFIG.BUSINESS_LOCATION_URL;
+  directionsLink.href = mapUrl;
+  directionsLink.textContent = t('contact.directionsCta') || 'Get Directions';
 }
 
 function formatWhatsAppNumber(number) {

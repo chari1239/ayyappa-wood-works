@@ -4,7 +4,7 @@ export const CONFIG = {
   SANITY_API_VERSION: import.meta.env.VITE_SANITY_API_VERSION || '2026-08-23',
   BUSINESS_PHONE: import.meta.env.VITE_BUSINESS_PHONE || '919989356819',
   WHATSAPP_NUMBER: import.meta.env.VITE_WHATSAPP_NUMBER || '+91 9533235113',
-  BUSINESS_LOCATION_URL: import.meta.env.VITE_BUSINESS_LOCATION_URL || 'https://maps.app.goo.gl/iwwGT4W2nbigiAvw6',
+  BUSINESS_LOCATION_URL: import.meta.env.VITE_BUSINESS_LOCATION_URL || 'https://maps.app.goo.gl/whDq4K7qvuCgHy8s5',
 };
 
 export const HAS_SANITY_CONFIG = Boolean(CONFIG.SANITY_PROJECT_ID && CONFIG.SANITY_DATASET);
