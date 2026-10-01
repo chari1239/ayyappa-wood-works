@@ -1,0 +1,306 @@
+AYYAPA WOOD WORKS - CURRENT CODE DEMO CONTENT
+
+Source: src/data/demoProjects.js
+This file lists the 12 categories and 18 projects defined in src/data/demoProjects.js. These are sample concepts and demo imagery, not confirmation of actual completed business projects. Replace descriptions, wood details, and image uploads with accurate business information before publishing.
+
+How the current code uses this data:
+  - It uses the 18 demo projects when Sanity is not configured, fetch fails, or Sanity returns no projects.
+  - If Sanity returns projects, those projects replace the demo projects on the site.
+  - The 12 demo categories are merged with Sanity categories. A Sanity category with the same slug replaces that demo category.
+  - This file can list only code-defined demo data. It cannot list additional documents stored in the Sanity project.
+
+In Sanity, create all Category documents first. Then create each Project and select the referenced Category. The Category Type shown below is the selected Category's type; it is not a Project field. Sanity image fields require uploading image files; the website demo image URLs are not Sanity uploads.
+
+CATEGORIES (12)
+================
+
+Title: Main Doors
+Slug: main-doors
+Description: Statement entrance doors for homes and villas.
+Category Type: Door
+Category image alt text: Premium wooden main door entrance
+
+Title: Pooja Doors
+Slug: pooja-doors
+Description: Sacred door designs for pooja rooms and mandirs.
+Category Type: Door
+Category image alt text: Warm carved interior wooden doorway
+
+Title: Double Doors
+Slug: double-doors
+Description: Wide double-door compositions with balanced panels.
+Category Type: Door
+Category image alt text: Large double wooden entrance door
+
+Title: Traditional Doors
+Slug: traditional-doors
+Description: Classic Indian profiles with timeless carved details.
+Category Type: Door
+Category image alt text: Traditional architectural wooden detail
+
+Title: Modern Doors
+Slug: modern-doors
+Description: Clean contemporary lines with premium wood finishes.
+Category Type: Door
+Category image alt text: Modern wooden interior doorway
+
+Title: Carved Doors
+Slug: carved-doors
+Description: Decorative carving, panel depth and ornamental details.
+Category Type: Door
+Category image alt text: Detailed carved wooden surface
+
+Title: Windows
+Slug: windows
+Description: Wooden windows with classic and modern proportions.
+Category Type: Woodwork
+Category image alt text: Wooden window and warm interior
+
+Title: Pooja Mandirs
+Slug: pooja-mandirs
+Description: Custom mandir units and devotional woodwork.
+Category Type: Woodwork
+Category image alt text: Elegant wooden interior alcove
+
+Title: Furniture
+Slug: furniture
+Description: Bespoke wooden furniture for residential interiors.
+Category Type: Woodwork
+Category image alt text: Custom wood furniture detail
+
+Title: Staircases
+Slug: staircases
+Description: Wooden stair details, railings and treads.
+Category Type: Woodwork
+Category image alt text: Wooden staircase in premium home interior
+
+Title: Wooden Partitions
+Slug: partitions
+Description: Decorative wooden partitions and interior screens.
+Category Type: Woodwork
+Category image alt text: Wooden partition and warm interior
+
+Title: Custom Woodwork
+Slug: custom-woodwork
+Description: Made-to-measure woodwork for specific spaces.
+Category Type: Woodwork
+Category image alt text: Custom premium wooden interior
+
+PROJECTS (18)
+================
+
+Title: Main Door - Traditional Teak
+Slug: main-door-traditional-teak
+Category: Main Doors
+Category Type: Door
+Description: A grand main door concept with strong panels, warm grain and traditional proportions for a premium entrance.
+Wood Type: Teak wood
+Style: Traditional
+Featured Project: Yes
+Display Order: 1
+Main image alt text: Traditional teak main door with premium entrance styling
+Gallery Images: none in demo data
+
+Title: Carved Pooja Door
+Slug: carved-pooja-door
+Category: Pooja Doors
+Category Type: Door
+Description: A pooja room door direction with carved details, sacred styling and a rich warm finish.
+Wood Type: Teak and veneer finish
+Style: Carved
+Featured Project: Yes
+Display Order: 2
+Main image alt text: Carved wooden pooja room door design
+Gallery Images: none in demo data
+
+Title: Modern Double Door
+Slug: modern-double-door
+Category: Double Doors
+Category Type: Door
+Description: A balanced double-door design with clean lines, broad panels and a polished contemporary look.
+Wood Type: Engineered wood with teak veneer
+Style: Modern
+Featured Project: Yes
+Display Order: 3
+Main image alt text: Modern double wooden door entrance
+Gallery Images: none in demo data
+
+Title: Classic Wooden Door
+Slug: classic-wooden-door
+Category: Traditional Doors
+Category Type: Door
+Description: Classic panel styling for homes that need a simple, elegant and lasting wooden door presence.
+Wood Type: Solid hardwood
+Style: Traditional
+Featured Project: Yes
+Display Order: 4
+Main image alt text: Classic traditional wooden door design
+Gallery Images: none in demo data
+
+Title: Temple Style Door
+Slug: temple-style-door
+Category: Pooja Doors
+Category Type: Door
+Description: Temple-inspired door styling with vertical rhythm, ornamental edges and a devotional character.
+Wood Type: Teak wood
+Style: Traditional
+Featured Project: Yes
+Display Order: 5
+Main image alt text: Temple inspired wooden door and mandir detail
+Gallery Images: none in demo data
+
+Title: Minimal Flush Main Door
+Slug: minimal-flush-main-door
+Category: Modern Doors
+Category Type: Door
+Description: A refined flush door direction with simple geometry and uninterrupted wood grain.
+Wood Type: Walnut veneer
+Style: Modern
+Featured Project: No
+Display Order: 6
+Main image alt text: Minimal modern wooden door design
+Gallery Images: none in demo data
+
+Title: Hand-Carved Panel Door
+Slug: hand-carved-panel-door
+Category: Carved Doors
+Category Type: Door
+Description: A carved panel concept using depth, borders and handcrafted details for a rich traditional look.
+Wood Type: Teak wood
+Style: Carved
+Featured Project: No
+Display Order: 7
+Main image alt text: Hand carved wooden panel door detail
+Gallery Images: none in demo data
+
+Title: Heritage Main Entrance
+Slug: heritage-main-entrance
+Category: Main Doors
+Category Type: Door
+Description: A heritage-style entrance idea with a bold frame, warm tone and timeless Indian character.
+Wood Type: Solid teak
+Style: Traditional
+Featured Project: No
+Display Order: 8
+Main image alt text: Heritage wooden main entrance design
+Gallery Images: none in demo data
+
+Title: Contemporary Slatted Door
+Slug: contemporary-slatted-door
+Category: Modern Doors
+Category Type: Door
+Description: A contemporary slatted direction for interiors that need texture without heavy ornamentation.
+Wood Type: Oak finish
+Style: Modern
+Featured Project: No
+Display Order: 9
+Main image alt text: Contemporary slatted wooden door design
+Gallery Images: none in demo data
+
+Title: Wide Traditional Double Door
+Slug: wide-traditional-double-door
+Category: Double Doors
+Category Type: Door
+Description: A wide double-door concept with symmetrical panels and a formal entrance composition.
+Wood Type: Teak wood
+Style: Traditional
+Featured Project: No
+Display Order: 10
+Main image alt text: Wide traditional double wooden door design
+Gallery Images: none in demo data
+
+Title: Detailed Carved Entry Door
+Slug: detailed-carved-entry-door
+Category: Carved Doors
+Category Type: Door
+Description: A detailed carved entrance direction for homeowners who want the door to become the visual centerpiece.
+Wood Type: Rosewood finish
+Style: Carved
+Featured Project: No
+Display Order: 11
+Main image alt text: Detailed carved wooden entry door concept
+Gallery Images: none in demo data
+
+Title: Elegant Pooja Room Door
+Slug: elegant-pooja-room-door
+Category: Pooja Doors
+Category Type: Door
+Description: An elegant pooja room door concept with graceful proportions and a warm devotional feel.
+Wood Type: Hardwood with polish finish
+Style: Traditional
+Featured Project: No
+Display Order: 12
+Main image alt text: Elegant pooja room wooden door
+Gallery Images: none in demo data
+
+Title: Classic Wooden Window Set
+Slug: classic-wooden-window-set
+Category: Windows
+Category Type: Woodwork
+Description: A warm wooden window direction with clean frames and traditional proportions.
+Wood Type: Teak wood
+Style: Classic
+Featured Project: No
+Display Order: 13
+Main image alt text: Classic wooden window set
+Gallery Images: none in demo data
+
+Title: Custom Pooja Mandir Unit
+Slug: custom-pooja-mandir-unit
+Category: Pooja Mandirs
+Category Type: Woodwork
+Description: A custom pooja mandir unit direction designed for storage, devotional display and warm wood detail.
+Wood Type: Plywood with teak veneer
+Style: Traditional
+Featured Project: No
+Display Order: 14
+Main image alt text: Custom wooden pooja mandir unit
+Gallery Images: none in demo data
+
+Title: Bespoke Wooden Furniture
+Slug: bespoke-wooden-furniture
+Category: Furniture
+Category Type: Woodwork
+Description: Bespoke furniture concept with clean storage lines and a premium wood finish.
+Wood Type: Hardwood and veneer
+Style: Modern
+Featured Project: No
+Display Order: 15
+Main image alt text: Bespoke wooden furniture design
+Gallery Images: none in demo data
+
+Title: Wooden Stair Detail
+Slug: wooden-stair-detail
+Category: Staircases
+Category Type: Woodwork
+Description: A staircase woodwork direction with refined treads, railing warmth and architectural presence.
+Wood Type: Oak finish
+Style: Modern
+Featured Project: No
+Display Order: 16
+Main image alt text: Wooden staircase detail
+Gallery Images: none in demo data
+
+Title: Decorative Wooden Partition
+Slug: decorative-wooden-partition
+Category: Partitions
+Category Type: Woodwork
+Description: A decorative partition concept for separating spaces while keeping the interior warm and open.
+Wood Type: Engineered wood
+Style: Modern
+Featured Project: No
+Display Order: 17
+Main image alt text: Decorative wooden partition design
+Gallery Images: none in demo data
+
+Title: Made-to-Measure Woodwork
+Slug: made-to-measure-woodwork
+Category: Custom Woodwork
+Category Type: Woodwork
+Description: Flexible custom woodwork for unique layouts, storage needs and interior finishing details.
+Wood Type: Custom selection
+Style: Custom
+Featured Project: No
+Display Order: 18
+Main image alt text: Made to measure custom woodwork
+Gallery Images: none in demo data
