@@ -1,0 +1,76 @@
+AYYAPA WOOD WORKS — SANITY CONTENT ENTRY GUIDE
+
+Studio: https://ayyappa-wood-works.vercel.app/studio
+
+Create Category documents before creating Project documents. Each project must
+reference a category so the website can place it in the correct gallery.
+
+
+1. CATEGORY DOCUMENTS
+---------------------
+In Sanity Studio, open Categories and create one Category for each group of work.
+
+Category fields:
+  Title             Required. Example: Main Doors
+  Slug              Required. Use “Generate” from the title.
+  Description       Optional.
+  Category Image    Optional. Upload an image and enter Alt Text describing it.
+  Category Type     Required. Choose exactly one:
+                      Door      = wooden door designs
+                      Woodwork  = windows, furniture, mandirs, staircases,
+                                  partitions, and other woodwork
+
+Suggested category titles (create only the ones you use):
+  Main Doors        Type: Door
+  Pooja Doors       Type: Door
+  Double Doors      Type: Door
+  Traditional Doors Type: Door
+  Modern Doors      Type: Door
+  Carved Doors      Type: Door
+  Windows           Type: Woodwork
+  Furniture         Type: Woodwork
+  Pooja Mandirs     Type: Woodwork
+  Staircases        Type: Woodwork
+  Partitions        Type: Woodwork
+  Custom Woodwork   Type: Woodwork
+
+
+2. PROJECT DOCUMENTS
+--------------------
+In Sanity Studio, open Projects and create one Project for each portfolio item.
+Upload each project’s photos to that project; do not make one project for a
+whole folder of unrelated items.
+
+Project fields:
+  Title             Required. Name of this item.
+  Slug              Required. Use “Generate” from the title.
+  Main Image        Required. Upload the primary photo and add Alt Text.
+  Gallery Images    Optional. Add extra photos of this same item; add Alt Text
+                    to each image.
+  Category          Required. Select the matching Category document.
+  Description       Optional. A short, accurate description of the item.
+  Wood Type         Optional. Enter only if known.
+  Style             Optional. Example: Traditional, Modern, or Carved.
+  Featured Project  Optional. Turn on to mark the item as featured.
+  Display Order     Optional. Whole number, 0 or higher. Lower numbers appear
+                    first. Example: 1, 2, 3.
+
+Examples:
+  A carved front door -> choose a Category whose type is Door.
+  A window            -> choose a Category whose type is Woodwork.
+
+
+3. ALT TEXT EXAMPLES
+--------------------
+Describe what is visible in the image, for example:
+  “Carved teak main door with floral panels”
+  “Wooden window with a dark polished finish”
+
+Use a description that matches the actual photo. Do not add details that are
+not known or visible.
+
+
+4. SAVE / PUBLISH
+-----------------
+Save or publish each Category and Project document in Studio. Confirm that every
+Project has a Category and a Main Image before publishing.
