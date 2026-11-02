@@ -27,13 +27,15 @@ export function renderCategoryCards(container, categories, target) {
       const src = getImageUrl(category.image, { width: 720, quality: 82 });
       const srcset = getImageSrcSet(category.image, [420, 640, 820]);
       const alt = getImageAlt(category.image, `${category.title} by Ayyapa Wood Works`);
+      const displayTitle = t(`categoryNames.${category.slug}`) || category.title;
+      const displayDescription = t(`categoryDescriptions.${category.slug}`) || category.description || '';
       return `
         <a class="category-card" href="#${target}" data-category-link data-gallery-target="${target}" data-filter="${category.slug}">
           <img src="${src}" ${srcset ? `srcset="${srcset}"` : ''} sizes="(max-width: 700px) 90vw, 28vw" alt="${escapeHtml(alt)}" loading="lazy">
           <span class="category-card__shade"></span>
           <span class="category-card__content">
-            <strong>${escapeHtml(category.title)}</strong>
-            <small>${escapeHtml(category.description || '')}</small>
+            <strong>${escapeHtml(displayTitle)}</strong>
+            <small>${escapeHtml(displayDescription)}</small>
           </span>
         </a>`;
     })
@@ -107,15 +109,18 @@ function renderGalleryCard(project, index) {
   const srcset = getImageSrcSet(project.mainImage, [480, 720, 960, 1280]);
   const alt = getImageAlt(project.mainImage, project.title);
   const tallClass = index % 5 === 0 || index % 5 === 3 ? ' gallery-card--tall' : '';
+  const displayTitle = t(`projectTitles.${project.slug}`) || project.title;
+  const displayCategory = t(`categoryNames.${project.categorySlug}`) || project.category;
+  const displayWood = t(`woodTypes.${slugify(project.woodType || '')}`) || project.woodType || t('lightbox.fallbackWood');
 
   return `
     <article class="gallery-card${tallClass}">
-      <button class="gallery-card__button" type="button" data-project-index="${index}" aria-label="${escapeHtml(t('lightbox.openDetails', { title: project.title }))}">
+      <button class="gallery-card__button" type="button" data-project-index="${index}" aria-label="${escapeHtml(t('lightbox.openDetails', { title: displayTitle }))}">
         <img src="${src}" ${srcset ? `srcset="${srcset}"` : ''} sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 30vw" alt="${escapeHtml(alt)}" loading="lazy">
         <span class="gallery-card__overlay">
-          <span class="gallery-card__category">${escapeHtml(project.category)}</span>
-          <span class="gallery-card__title">${escapeHtml(project.title)}</span>
-          <span class="gallery-card__meta">${escapeHtml(project.woodType || 'Custom wood')}</span>
+          <span class="gallery-card__category">${escapeHtml(displayCategory)}</span>
+          <span class="gallery-card__title">${escapeHtml(displayTitle)}</span>
+          <span class="gallery-card__meta">${escapeHtml(displayWood)}</span>
         </span>
       </button>
     </article>`;

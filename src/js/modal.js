@@ -1,5 +1,6 @@
 import { getWhatsAppUrl } from '../config.js';
 import { getImageAlt, getImageSrcSet, getImageUrl } from '../utils/image.js';
+import { slugify } from './gallery.js';
 import { t } from './i18n.js';
 
 export function createLightbox() {
@@ -52,10 +53,10 @@ export function createLightbox() {
     image.alt = getImageAlt(project.mainImage, project.title);
     image.srcset = getImageSrcSet(project.mainImage, [640, 960, 1280, 1600]);
     image.sizes = '(max-width: 900px) 92vw, 58vw';
-    category.textContent = project.category;
-    title.textContent = project.title;
-    wood.textContent = project.woodType || t('lightbox.fallbackWood');
-    description.textContent = project.description || t('lightbox.fallbackDescription');
+    category.textContent = t(`categoryNames.${project.categorySlug}`) || project.category;
+    title.textContent = t(`projectTitles.${project.slug}`) || project.title;
+    wood.textContent = t(`woodTypes.${slugify(project.woodType || '')}`) || project.woodType || t('lightbox.fallbackWood');
+    description.textContent = t(`projectDescriptions.${project.slug}`) || project.description || t('lightbox.fallbackDescription');
     whatsapp.href = getWhatsAppUrl(`Hello, I am interested in this design: ${project.title}.`);
     prev.setAttribute('aria-label', t('lightbox.previous'));
     next.setAttribute('aria-label', t('lightbox.next'));
