@@ -282,7 +282,7 @@ const translations = {
       'custom-wood': 'కస్టమ్ చెక్క',
     },
     projectTitles: {
-      'traditional-teak-double-door-with-gold-carved-frame': 'బంగారు చెక్కిన ఫ్రేమ్‌తో సాంప్రదాయ టేక్ డబుల్ డోర్',
+      'traditional-teak-main-door': 'బంగారు చెక్కిన ఫ్రేమ్‌తో సాంప్రదాయ టేక్ డబుల్ డోర్',
       'pooja-door-with-sacred-symbols-and-jaali-panels': 'పవిత్ర చిహ్నాలు మరియు జాలీ ప్యానెల్‌లతో పూజా ద్వారం',
       'classic-panelled-teak-door-with-leaf-carving': 'ఆకు చెక్కడంతో క్లాసిక్ ప్యానెల్ టేక్ డోర్',
       'teak-door-with-bold-grain-and-floral-corner-carvings': 'బలమైన గ్రెయిన్ మరియు పూల మూల చెక్కడాలతో టేక్ డోర్',
