@@ -1,10 +1,10 @@
 ﻿import { CONFIG, DEFAULT_WHATSAPP_MESSAGE, getWhatsAppUrl } from '../config.js';
 import { demoCategories, demoProjects } from '../data/demoProjects.js';
-import { createFilterableGallery, doorFilters, renderCategoryCards, woodworkFilters } from './gallery.js';
+import { createFilterableGallery, doorFilters, renderCategoryCards, slugify, woodworkFilters } from './gallery.js';
 import { getCurrentLanguage, getStoredLanguage, setCurrentLanguage, setStoredLanguage, t } from './i18n.js';
 import { createLightbox } from './modal.js';
 import { fetchSanityContent } from './sanity.js';
-import { getImageUrl } from '../utils/image.js';
+import { getImageAlt, getImageUrl } from '../utils/image.js';
 
 const state = {
   galleries: {},
@@ -36,7 +36,11 @@ async function init() {
   const woodworkCategories = categories.filter((category) => category.type === 'woodwork');
 
   setHeroImage(doorProjects[0]?.mainImage || demoProjects[0].mainImage);
-  renderCategoryCards(document.querySelector('[data-door-categories]'), doorCategories, 'door-designs');
+  const aboutProject = doorProjects.find((project) => project.slug === 'floral-main-door-with-glass-sidelights') || doorProjects[1];
+  setSectionImage('[data-about-image]', aboutProject?.mainImage, 'Custom wooden door installed in a home');
+  const cncProject = woodworkProjects.find((project) => project.slug === 'inside-the-workshop-cnc-carving-in-progress') || woodworkProjects[0];
+  setSectionImage('[data-cnc-image]', cncProject?.mainImage, 'CNC machine carving a wooden panel in the Ayyappa Wood Works workshop');
+  renderCategoryCards(document.querySelector('[data-door-categories]'), buildDoorCategoryCards(doorCategories, doorProjects), 'door-designs');
   renderCategoryCards(document.querySelector('[data-woodwork-categories]'), woodworkCategories, 'wood-works');
 
   state.lightbox = createLightbox();
@@ -68,10 +72,12 @@ async function init() {
 async function loadContent() {
   try {
     const sanityContent = await fetchSanityContent();
-    if (sanityContent) {
+    if (sanityContent?.projects?.length) {
+      // Real Studio content fully replaces the demo portfolio, so no stock
+      // demo images are mixed into the live sections.
       return {
-        projects: sanityContent.projects?.length ? sanityContent.projects : demoProjects,
-        categories: mergeCategories(sanityContent.categories || [], demoCategories),
+        projects: sanityContent.projects,
+        categories: sanityContent.categories || [],
       };
     }
   } catch (error) {
@@ -84,12 +90,51 @@ async function loadContent() {
   };
 }
 
-function mergeCategories(sanityCategories, fallbackCategories) {
-  if (!sanityCategories.length) return fallbackCategories;
+const DOOR_CARD_ORDER = ['main-doors', 'pooja-doors', 'double-doors', 'traditional-doors', 'modern-doors', 'carved-doors'];
+const DOOR_STYLE_CARDS = { 'traditional-doors': 'traditional', 'modern-doors': 'modern' };
 
-  const bySlug = new Map(fallbackCategories.map((category) => [category.slug, category]));
-  sanityCategories.forEach((category) => bySlug.set(category.slug, category));
-  return Array.from(bySlug.values());
+function buildDoorCategoryCards(categories, projects) {
+  const bySlug = new Map(categories.map((category) => [category.slug, category]));
+  const cards = [];
+
+  DOOR_CARD_ORDER.forEach((slug) => {
+    if (bySlug.has(slug)) {
+      cards.push(bySlug.get(slug));
+      return;
+    }
+
+    // Traditional and Modern are styles, not Studio categories: show the
+    // card with a real project photo of that style instead of a stock image.
+    const style = DOOR_STYLE_CARDS[slug];
+    if (!style) return;
+    const project = projects.find((item) => slugify(item.style) === style);
+    const fallback = demoCategories.find((category) => category.slug === slug);
+    if (project && fallback) {
+      cards.push({
+        title: fallback.title,
+        slug,
+        description: fallback.description,
+        type: 'door',
+        image: project.mainImage,
+      });
+    }
+  });
+
+  categories.forEach((category) => {
+    if (!DOOR_CARD_ORDER.includes(category.slug)) cards.push(category);
+  });
+
+  return cards;
+}
+
+function setSectionImage(selector, image, fallbackAlt) {
+  // Only Studio images (which carry an asset reference) replace the static
+  // section photos; demo placeholder images have a plain URL instead.
+  if (!image?.asset) return;
+  const element = document.querySelector(selector);
+  if (!element) return;
+  element.src = getImageUrl(image, { width: 1100, quality: 80 });
+  element.alt = getImageAlt(image, fallbackAlt);
 }
 
 function sortByDisplayOrder(items) {

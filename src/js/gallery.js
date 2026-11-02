@@ -56,7 +56,12 @@ export function createFilterableGallery({ container, filterContainer, projects, 
   function renderGallery() {
     visibleProjects = activeFilter === 'all'
       ? [...projects]
-      : projects.filter((project) => project.categorySlug === activeFilter || slugify(project.style) === activeFilter);
+      : projects.filter((project) => {
+          const styleSlug = slugify(project.style);
+          return project.categorySlug === activeFilter
+            || styleSlug === activeFilter
+            || `${styleSlug}-doors` === activeFilter;
+        });
 
     if (!visibleProjects.length) {
       container.innerHTML = `<p class="empty-state">${escapeHtml(t('gallery.emptyState'))}</p>`;
