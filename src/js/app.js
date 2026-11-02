@@ -42,7 +42,7 @@ async function init() {
   const cncProject = woodworkProjects.find((project) => project.slug === 'inside-the-workshop-cnc-carving-in-progress') || woodworkProjects[0];
   setSectionImage('[data-cnc-image]', cncProject?.mainImage, 'CNC machine carving a wooden panel in the Ayyappa Wood Works workshop');
   renderCategoryCards(document.querySelector('[data-door-categories]'), buildDoorCategoryCards(doorCategories, doorProjects), 'door-designs');
-  renderCategoryCards(document.querySelector('[data-woodwork-categories]'), woodworkCategories, 'wood-works');
+  renderCategoryCards(document.querySelector('[data-woodwork-categories]'), orderCategoriesBySlug(woodworkCategories, WOODWORK_CARD_ORDER), 'wood-works');
 
   state.lightbox = createLightbox();
 
@@ -93,6 +93,19 @@ async function loadContent() {
 
 const DOOR_CARD_ORDER = ['main-doors', 'pooja-doors', 'double-doors', 'traditional-doors', 'modern-doors', 'carved-doors'];
 const DOOR_STYLE_CARDS = { 'traditional-doors': 'traditional', 'modern-doors': 'modern' };
+const WOODWORK_CARD_ORDER = ['windows', 'pooja-mandirs', 'furniture', 'staircases', 'partitions', 'custom-woodwork'];
+
+function orderCategoriesBySlug(categories, order) {
+  const bySlug = new Map(categories.map((category) => [category.slug, category]));
+  const ordered = [];
+  order.forEach((slug) => {
+    if (bySlug.has(slug)) {
+      ordered.push(bySlug.get(slug));
+      bySlug.delete(slug);
+    }
+  });
+  return [...ordered, ...bySlug.values()];
+}
 
 function buildDoorCategoryCards(categories, projects) {
   const bySlug = new Map(categories.map((category) => [category.slug, category]));
