@@ -25,6 +25,41 @@ const translations = {
       primaryCta: 'Explore Door Designs',
       secondaryCta: 'Contact Us',
     },
+    studio: {
+      cards: {
+        first: {
+          title: 'Doors as the focal point',
+          description: 'Custom entrance, pooja, carved, traditional and modern wooden doors presented with the attention they deserve.',
+        },
+        second: {
+          title: 'Made for real homes',
+          description: 'Layouts, proportions and finishes can be adapted for homes, apartments, mandirs and interior woodwork.',
+        },
+        third: {
+          title: 'Simple enquiry flow',
+          description: 'Every featured project opens to a detailed view with a direct WhatsApp enquiry option.',
+        },
+      },
+    },
+    categories: {
+      eyebrow: 'Portfolio Categories',
+      title: 'Explore Custom Woodwork',
+      description: 'Browse door design styles first, then explore other woodwork crafted for interiors and architectural details.',
+      doorLabel: 'Main Category',
+      doorTitle: 'Door Designs',
+      woodworkLabel: 'Other Woodwork',
+      woodworkTitle: 'Wood Works',
+    },
+    featuredDoors: {
+      eyebrow: 'Featured Door Gallery',
+      title: 'Custom Wooden Door Designs',
+      description: 'Filter by style and open each project for larger images, wood type details and direct enquiry.',
+    },
+    otherWoodwork: {
+      eyebrow: 'Beyond Doors',
+      title: 'Other Wood Works',
+      description: 'Windows, furniture, pooja mandirs, staircases, wooden partitions and custom pieces.',
+    },
     about: {
       eyebrow: 'About Ayyapa Wood Works',
       title: 'Crafted With Experience',
@@ -105,6 +140,41 @@ const translations = {
       subtitle: 'సాంప్రదాయపు కృషి, శాశ్వత డిజైన్లు మరియు కస్టమ్ వుడ్ వర్క్.',
       primaryCta: 'డోర్ డిజైన్లు చూడండి',
       secondaryCta: 'సంప్రదించండి',
+    },
+    studio: {
+      cards: {
+        first: {
+          title: 'ద్వారాలే ప్రధాన ఆకర్షణ',
+          description: 'కస్టమ్ ప్రవేశ, పూజా, చెక్కిన, సాంప్రదాయ మరియు ఆధునిక చెక్క ద్వారాలను వాటికి తగిన ప్రాధాన్యంతో ప్రదర్శిస్తాము.',
+        },
+        second: {
+          title: 'నిజమైన ఇళ్ల కోసం తయారు',
+          description: 'లేఅవుట్లు, నిష్పత్తులు మరియు ఫినిష్‌లను ఇళ్లు, అపార్ట్‌మెంట్లు, మందిరాలు మరియు ఇంటీరియర్ వుడ్‌వర్క్‌కు అనుగుణంగా మార్చవచ్చు.',
+        },
+        third: {
+          title: 'సులభమైన విచారణ ప్రక్రియ',
+          description: 'ప్రతి ప్రదర్శిత ప్రాజెక్ట్ వివరాల వీక్షణను తెరుస్తుంది, అందులో నేరుగా WhatsAppలో విచారించే అవకాశం ఉంటుంది.',
+        },
+      },
+    },
+    categories: {
+      eyebrow: 'పోర్ట్‌ఫోలియో విభాగాలు',
+      title: 'కస్టమ్ వుడ్‌వర్క్‌ను చూడండి',
+      description: 'ముందు డోర్ డిజైన్ శైలులను చూడండి, తరువాత ఇంటీరియర్‌లు మరియు నిర్మాణ వివరాల కోసం తయారు చేసిన ఇతర వుడ్‌వర్క్‌ను చూడండి.',
+      doorLabel: 'ప్రధాన విభాగం',
+      doorTitle: 'డోర్ డిజైన్లు',
+      woodworkLabel: 'ఇతర వుడ్‌వర్క్',
+      woodworkTitle: 'వుడ్ వర్క్స్',
+    },
+    featuredDoors: {
+      eyebrow: 'ప్రత్యేక డోర్ గ్యాలరీ',
+      title: 'కస్టమ్ వుడెన్ డోర్ డిజైన్లు',
+      description: 'శైలి ప్రకారం ఫిల్టర్ చేయండి. పెద్ద చిత్రాలు, చెక్క రకం వివరాలు మరియు నేరుగా విచారించేందుకు ప్రతి ప్రాజెక్ట్‌ను తెరవండి.',
+    },
+    otherWoodwork: {
+      eyebrow: 'ద్వారాలకు మించి',
+      title: 'ఇతర వుడ్ వర్క్స్',
+      description: 'కిటికీలు, ఫర్నిచర్, పూజా మందిరాలు, మెట్లు, చెక్క పార్టిషన్లు మరియు కస్టమ్ పనులు.',
     },
     about: {
       eyebrow: 'అయ్యప్ప వుడ్ వర్క్స్ గురించి',
@@ -199,7 +269,8 @@ export function setCurrentLanguage(language) {
 }
 
 export function t(path, variables = {}) {
-  const value = lookup(translations[currentLanguage] || translations.en, path);
+  const localizedValue = lookup(translations[currentLanguage] || translations.en, path);
+  const value = typeof localizedValue === 'string' ? localizedValue : lookup(translations.en, path);
   if (typeof value !== 'string') return '';
   return value.replace(/{{(\w+)}}/g, (_, key) => (variables[key] ?? ''));
 }
