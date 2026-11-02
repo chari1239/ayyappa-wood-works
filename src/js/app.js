@@ -35,7 +35,8 @@ async function init() {
   const doorCategories = categories.filter((category) => category.type === 'door');
   const woodworkCategories = categories.filter((category) => category.type === 'woodwork');
 
-  setHeroImage(doorProjects[0]?.mainImage || demoProjects[0].mainImage);
+  const heroProject = doorProjects.find((project) => project.categorySlug === 'main-doors') || doorProjects[0];
+  setHeroImage(heroProject?.mainImage || demoProjects[0].mainImage);
   const aboutProject = doorProjects.find((project) => project.slug === 'floral-main-door-with-glass-sidelights') || doorProjects[1];
   setSectionImage('[data-about-image]', aboutProject?.mainImage, 'Custom wooden door installed in a home');
   const cncProject = woodworkProjects.find((project) => project.slug === 'inside-the-workshop-cnc-carving-in-progress') || woodworkProjects[0];
