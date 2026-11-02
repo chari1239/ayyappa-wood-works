@@ -580,6 +580,10 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.cnc__image img {
+  aspect-ratio: 16 / 10;
+}
+
 .text-link {
   display: inline-flex;
   margin-top: 18px;
