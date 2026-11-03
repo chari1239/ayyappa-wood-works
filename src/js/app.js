@@ -1,6 +1,6 @@
 ﻿import { CONFIG, DEFAULT_WHATSAPP_MESSAGE, getWhatsAppUrl } from '../config.js';
 import { demoCategories, demoProjects } from '../data/demoProjects.js';
-import { createFilterableGallery, doorFilters, renderCategoryCards, slugify, woodworkFilters } from './gallery.js';
+import { createFilterableGallery, doorFilters, slugify, woodworkFilters } from './gallery.js';
 import { getCurrentLanguage, getStoredLanguage, setCurrentLanguage, setStoredLanguage, t } from './i18n.js';
 import { createLightbox } from './modal.js';
 import { fetchSanityContent } from './sanity.js';
@@ -29,20 +29,15 @@ async function init() {
 
   const content = await loadContent();
   const projects = sortByDisplayOrder(content.projects);
-  const categories = content.categories;
   const doorProjects = projects.filter((project) => project.projectType === 'door');
   const woodworkProjects = projects.filter((project) => project.projectType === 'woodwork');
-  const doorCategories = categories.filter((category) => category.type === 'door');
-  const woodworkCategories = categories.filter((category) => category.type === 'woodwork');
 
   const heroProject = doorProjects.find((project) => project.categorySlug === 'main-doors') || doorProjects[0];
   setHeroImage(heroProject?.mainImage || demoProjects[0].mainImage);
-  const aboutProject = doorProjects.find((project) => project.slug === 'floral-main-door-with-glass-sidelights') || doorProjects[1];
+  const aboutProject = doorProjects.find((project) => project.slug === 'classic-panelled-teak-door-with-leaf-carving') || doorProjects[1];
   setSectionImage('[data-about-image]', aboutProject?.mainImage, 'Custom wooden door installed in a home');
   const cncProject = woodworkProjects.find((project) => project.slug === 'inside-the-workshop-cnc-carving-in-progress') || woodworkProjects[0];
   setSectionImage('[data-cnc-image]', cncProject?.mainImage, 'CNC machine carving a wooden panel in the Ayyappa Wood Works workshop');
-  renderCategoryCards(document.querySelector('[data-door-categories]'), buildDoorCategoryCards(doorCategories, doorProjects), 'door-designs');
-  renderCategoryCards(document.querySelector('[data-woodwork-categories]'), orderCategoriesBySlug(woodworkCategories, WOODWORK_CARD_ORDER), 'wood-works');
 
   state.lightbox = createLightbox();
 
@@ -89,56 +84,6 @@ async function loadContent() {
     projects: demoProjects,
     categories: demoCategories,
   };
-}
-
-const DOOR_CARD_ORDER = ['main-doors', 'pooja-doors', 'double-doors', 'traditional-doors', 'modern-doors', 'carved-doors'];
-const DOOR_STYLE_CARDS = { 'traditional-doors': 'traditional', 'modern-doors': 'modern' };
-const WOODWORK_CARD_ORDER = ['windows', 'pooja-mandirs', 'furniture', 'staircases', 'partitions', 'custom-woodwork'];
-
-function orderCategoriesBySlug(categories, order) {
-  const bySlug = new Map(categories.map((category) => [category.slug, category]));
-  const ordered = [];
-  order.forEach((slug) => {
-    if (bySlug.has(slug)) {
-      ordered.push(bySlug.get(slug));
-      bySlug.delete(slug);
-    }
-  });
-  return [...ordered, ...bySlug.values()];
-}
-
-function buildDoorCategoryCards(categories, projects) {
-  const bySlug = new Map(categories.map((category) => [category.slug, category]));
-  const cards = [];
-
-  DOOR_CARD_ORDER.forEach((slug) => {
-    if (bySlug.has(slug)) {
-      cards.push(bySlug.get(slug));
-      return;
-    }
-
-    // Traditional and Modern are styles, not Studio categories: show the
-    // card with a real project photo of that style instead of a stock image.
-    const style = DOOR_STYLE_CARDS[slug];
-    if (!style) return;
-    const project = projects.find((item) => slugify(item.style) === style);
-    const fallback = demoCategories.find((category) => category.slug === slug);
-    if (project && fallback) {
-      cards.push({
-        title: fallback.title,
-        slug,
-        description: fallback.description,
-        type: 'door',
-        image: project.mainImage,
-      });
-    }
-  });
-
-  categories.forEach((category) => {
-    if (!DOOR_CARD_ORDER.includes(category.slug)) cards.push(category);
-  });
-
-  return cards;
 }
 
 function setSectionImage(selector, image, fallbackAlt) {
