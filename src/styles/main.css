@@ -608,6 +608,14 @@ h3 {
   font-size: 0.95rem;
 }
 
+.services-note {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-top: 28px;
+}
+
 .faq-list {
   max-width: 820px;
   margin: 0 auto;
