@@ -125,11 +125,12 @@ const translations = {
       q4: 'What other wood work do you make?',
       a4: 'Cots, cupboards, TV units, dining tables, chairs, benches, choukattu (door and window frames) and wood polishing (thopda) — any wood work will be done here.',
       q5: 'How do I order a door?',
-      a5: 'Pick a design on this website, then enquire on WhatsApp at +91 95332 35113 or call +91 99893 56819 with your measurements. We build it to your size, finish and carving details.',
+      a5: 'You can select any design from this website and we will make it for you. If you have your own custom design, share it with us — we will make that too. Contact us on WhatsApp at +91 95332 35113 or call +91 99893 56819 to get the full list of designs.',
     },
     footer: {
       title: 'AYYAPA WOOD WORKS',
       description: 'Custom wooden doors and handcrafted woodwork.',
+      location: 'Proddatur · Kadapa · Andhra Pradesh',
     },
     lightbox: {
       woodTypeLabel: 'Wood type:',
@@ -292,11 +293,12 @@ const translations = {
       q4: 'ఇంకా ఏ చెక్క పనులు చేస్తారు?',
       a4: 'మంచాలు, అలమరాలు, టీవీ యూనిట్లు, డైనింగ్ టేబుళ్లు, కుర్చీలు, బెంచీలు, చౌకట్టులు మరియు తోపుడు (పాలిష్) పని — ఎలాంటి చెక్క పని అయినా ఇక్కడ చేస్తాము.',
       q5: 'ద్వారం ఎలా ఆర్డర్ చేయాలి?',
-      a5: 'ఈ వెబ్‌సైట్‌లో డిజైన్ ఎంచుకోండి, తర్వాత మీ కొలతలతో WhatsApp +91 95332 35113 లో సంప్రదించండి లేదా +91 99893 56819 కు కాల్ చేయండి. మీ సైజు, ఫినిష్ మరియు చెక్కడానికి తగ్గట్టు తయారు చేస్తాము.',
+      a5: 'మీరు ఈ వెబ్‌సైట్‌లోని ఏ డిజైన్‌నైనా ఎంచుకోవచ్చు, దానిని మేము మీ కోసం తయారు చేస్తాము. మీకు సొంత కస్టమ్ డిజైన్ ఉంటే, దానిని మాతో పంచుకోండి — దానిని కూడా తయారు చేస్తాము. పూర్తి డిజైన్ల జాబితా కోసం WhatsApp +91 95332 35113 లో సంప్రదించండి లేదా +91 99893 56819 కు కాల్ చేయండి.',
     },
     footer: {
       title: 'అయ్యప్ప వుడ్ వర్క్స్',
       description: 'కస్టమ్ వుడెన్ డోర్లు మరియు చేతివృత్తి వుడ్ వర్క్.',
+      location: 'ప్రొద్దుటూరు · కడప · ఆంధ్రప్రదేశ్',
     },
     lightbox: {
       woodTypeLabel: 'చెక్క రకం:',
